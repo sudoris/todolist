@@ -64,7 +64,7 @@ app.post('/',function(req,res){
 	var city = req.body.city;
 	var minTemp = req.body.minTemp;
 		
-	request('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=' + apiKey, function(error, response, body) {
+	request('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=' + apiKey + "&units=metric", function(error, response, body) {
 		if (!error && response.statusCode == 200) {
 			var data = JSON.parse(body);
 			console.log(data["main"]["temp"]);
@@ -76,18 +76,21 @@ app.post('/',function(req,res){
 				warmEnough = "not warm";
 			}
 			
-			req.session.toDo.push({"name":req.body.name, "id":req.session.curId, "city": req.body.city, "minTemp": req.body.minTemp, "warmEnough": warmEnough});
+			req.session.toDo.push({"name":req.body.name, "id":req.session.curId, "city": req.body.city, "temp": data["main"]["temp"], "minTemp": req.body.minTemp, "warmEnough": warmEnough});
 			
 			
 			
 			context.city = req.body.city;
 			context.minTemp = req.body.minTemp;  
+			context.temp = data["main"]["temp"];
+
+			console.log(context.temp);
 
 			context.name = req.session.name;
 			context.toDoCount = req.session.toDo.length;   
 			context.toDo = req.session.toDo;
 			console.log(context.toDo);
-			res.render('toDo',context);
+			res.render('toDo', context);
 			
 			
 		} else {

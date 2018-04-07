@@ -22,7 +22,7 @@
 <ul>
   {{#each toDo}}
   <li>
-    <h3>It is {{this.warmEnough}} enough to {{this.name}} in {{this.city}} today</h3>
+    <h3>It is {{this.temp}} degrees C and {{this.warmEnough}} enough to {{this.name}} in {{this.city}} today</h3>
     <form method="post">
       <input type="hidden" name="id" value="{{this.id}}">
 	  
