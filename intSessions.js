@@ -11,7 +11,9 @@ app.use(session({secret:'SuperSecretPassword'}));
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
-app.set('port', 5333);
+// app.set('port', 5333);
+
+var port = process.env.PORT || 5333;
 
 app.get('/',function(req,res,next){
   var context = {};
