@@ -1,11 +1,11 @@
 {
-  "name": "hello-world",
+  "name": "todolist",
   "version": "1.0.0",
   "description": "todolist using OpenWeather API",
-  "main": "app.js",
+  "main": "intSessions.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "node intSessions.js"
   },
   "author": "OSU",
   "license": "ISC",
